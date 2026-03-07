@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MASDABIYANET</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, #2c1e14 0%, #1a110a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            width: 350px;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .logo {
+            width: 110px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+        }
+
+        h1 {
+            color: #d4af37;
+            font-size: 22px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #d4af37;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(45deg, #d4af37, #b8860b);
+            border: none;
+            border-radius: 10px;
+            color: #1a110a;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+        }
+
+        #error-msg {
+            color: #ff5e5e;
+            font-size: 14px;
+            margin-top: 15px;
+            display: none;
+            font-weight: 500;
+        }
+
+        /* Tampilan Sukses */
+        .success-box {
+            display: none;
+        }
+
+        .success-text {
+            color: #2ecc71;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container" id="main-box">
+    <img src="https://github.com/f44unt-87/Ubah-Sandi/blob/f2e9dac78b2243e44bb3cf566781fafa7b4c7f04/IMG_5355.PNG"  alt="Logo" class="logo">
+    <h1>MASDABIYANET</h1>
+    
+    <div id="login-form">
+        <input type="text" id="username" placeholder="Username" autocomplete="off">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="checkLogin()">Login</button>
+        <p id="error-msg">Kamu Keliru Sandine Cak</p>
+    </div>
+
+    <div id="success-form" class="success-box">
+        <p class="success-text">Sukses Cak!</p>
+        <button onclick="goToRouter()">LANJUT</button>
+    </div>
+</div>
+
+<script>
+    function checkLogin() {
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+        const errorMsg = document.getElementById('error-msg');
+        const loginForm = document.getElementById('login-form');
+        const successForm = document.getElementById('success-form');
+
+        if (user === "syifax" && pass === "masdabiyanet") {
+            // Sembunyikan form login, tampilkan pesan sukses
+            loginForm.style.display = "none";
+            successForm.style.display = "block";
+            errorMsg.style.display = "none";
+        } else {
+            // Tampilkan pesan error jika salah
+            errorMsg.style.display = "block";
+            
+            // Animasi getar sedikit
+            const container = document.getElementById('main-box');
+            container.style.transform = "translateX(-10px)";
+            setTimeout(() => container.style.transform = "translateX(10px)", 100);
+            setTimeout(() => container.style.transform = "translateX(0)", 200);
+        }
+    }
+
+    function goToRouter() {
+        window.location.href = "http://192.168.1.1";
+    }
+</script>
+
+</body>
+</html>
